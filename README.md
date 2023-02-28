@@ -1,7 +1,8 @@
 # meta-rpi4b-dev Yocto Layer 
 
 ## Description
-This is an application layer for the Raspberry Pi 4B which has some basic Linux Dev Utilities installed. Raspbian is currently only avaiable in 64-bit
+This is an application layer for the Raspberry Pi 4B which has some basic Linux Dev Utilities installed. 
+Also, this Yocto Distro has the Real-Time Kernel Patch applied along with aptitude package management.
 
 ## Dependencies
 This layer depends on:
@@ -57,3 +58,7 @@ sudo bmaptool copy --bmap rpi4-dev-raspberrypi4-64-20220928230009.rootfs.wic.bma
 rpi4-dev-raspberrypi4-64-20220928230009.rootfs.wic /dev/sdb
 
 ```
+
+## Maintainer
+
+* Eric Owusu `<owusu.eric@protonmail.com>`

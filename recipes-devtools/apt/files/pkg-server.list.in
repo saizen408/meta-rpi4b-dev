@@ -1,0 +1,2 @@
+deb [trusted=yes] @PACKAGE_FEED_URIS@/all ./
+deb [trusted=yes] @PACKAGE_FEED_URIS@/cortexa72 ./

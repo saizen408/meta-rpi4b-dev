@@ -1,0 +1,53 @@
+# Yocto Project Poky distribution [Kirkstone] branch
+# Local configuration for meta-raspberrypi + meta-rpi4b-dev images
+# Meant to be machine specific and application agnostic
+# This local.conf file is only recommended for dev purposes 
+# to get a minimal embedded linux image running on the rpi4b
+
+DISTRO ?= "rpi4b-core-rt"
+MACHINE ?= "rpi4b-dev"
+
+LICENSE_FLAGS_ACCEPTED = "commercial"
+
+DISABLE_GLOBAL_CURSOR = "1"
+
+# Choices are Image or zImage if NOT using u-boot (no u-boot is the default)
+# Choices are uImage or zImage if using u-boot, though if you choose zImage
+# with u-boot you will also have to change the boot script boot command
+KERNEL_IMAGETYPE = "Image"
+
+WKS_FILE = "sdimage-raspberrypi.wks"
+
+RPI_USE_U_BOOT = "1"
+
+IMAGE_BOOT_FILES:append = " boot.scr u-boot.bin;${SDIMG_KERNELIMAGE}"
+IMAGE_FSTYPES:remove = " rpi-sdimg"
+
+DISABLE_OVERSCAN = "1"
+
+# Keep the downloads and sstate-cache outside the build directory.
+# Then, multiple build environments can use the same downloads and sstate-cache,
+# which speeds up builds significantly.
+DL_DIR ?= "${TOPDIR}/../downloads"
+SSTATE_DIR ?= "${TOPDIR}/../sstate-cache"
+
+# i686 or x86_64
+SDKMACHINE = "x86_64"
+
+PATCHRESOLVE = "noop"
+RM_OLD_IMAGE = "1"
+
+# Disables rainbow splash screen shown after GPU firmware has loaded
+DISABLE_SPLASH = "1"
+
+# This really saves a lot of disk space!
+INHERIT += "rm_work"
+
+BB_NUMBER_THREADS = "${@oe.utils.cpu_count()*2}"
+
+PARALLEL_THREADS = "${@oe.utils.cpu_count()*2}"
+
+PARALLEL_MAKE ?= "-j ${@oe.utils.cpu_count()*2}"
+
+# Enables Kernel Debug
+KERNEL_DEBUG = "1"
