@@ -53,11 +53,7 @@ Then run the bmaptool command as below. Note that this should be done outside of
 ```sh
 cd <path_to_yocto_build_dir>/build-pi4/tmp/deploy/images/raspberrypi4-64
 
-sudo bmaptool copy --bmap sb5506-dev-raspberrypi4-64-20220928230009.rootfs.wic.bmap \ 
-sb5506-dev-raspberrypi4-64-20220928230009.rootfs.wic /dev/sdb
+sudo bmaptool copy --bmap rpi4-dev-raspberrypi4-64-20220928230009.rootfs.wic.bmap \ 
+rpi4-dev-raspberrypi4-64-20220928230009.rootfs.wic /dev/sdb
 
 ```
-
-## Maintainers
-
-* Eric Owusu `<eowusu@accretechsbs.com>`
